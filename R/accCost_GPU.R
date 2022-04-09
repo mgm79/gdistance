@@ -87,7 +87,7 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   tr[adjP] <- Inf
   
   adjacencyGraph_igraph <- graph.adjacency(tr, mode="directed", weighted=TRUE)
-  E(adjacencyGraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
+  E(adjacencyGraph_igraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
 
   install.packages("devtools", dep = TRUE)
   devtools::install_bitbucket("cuRnet/cuRnet")
