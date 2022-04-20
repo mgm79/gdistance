@@ -89,11 +89,11 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   adjacencyGraph_igraph <- graph.adjacency(tr, mode="directed", weighted=TRUE)
   E(adjacencyGraph_igraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
 
-  library(cuRnet)
+  require(cuRnet)
 
   adjacencyGraph = cuRnet_graph(adjacencyGraph_igraph)
   shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
-                                  from=startNode)[-startNode]
+                                  from=startNode)#[-startNode]
   #shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
                                   #v=startNode, mode="out")[-startNode]
   
