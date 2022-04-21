@@ -90,6 +90,7 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   E(adjacencyGraph_igraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
 
   require(cuRnet)
+  library(cuRnet)
 
   adjacencyGraph <- cuRnet_graph(adjacencyGraph_igraph)
   shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
