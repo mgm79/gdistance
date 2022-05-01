@@ -98,7 +98,9 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   class(adjacencyGraph_igraph)
   print(adjacencyGraph_igraph)
 
-  write_graph(adjacencyGraph_igraph,"/content/g.txt","edgelist")
+  write_graph(adjacencyGraph_igraph,"/content/g.paj","pajek")
+  # Save a single object to a file
+  saveRDS(adjacencyGraph_igraph, "g_accCost.rds")
 
   adjacencyGraph <- cuRnet_graph(adjacencyGraph_igraph)
   shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
