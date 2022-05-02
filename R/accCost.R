@@ -91,10 +91,7 @@ setMethod("accCost", signature(x = "TransitionLayer",
   
   shortestPaths <- shortest.paths(adjacencyGraph, 
                                   v=startNode, mode="out")[-startNode]
-
-  print(shortestPaths)
-  # Save an object to a file
-  saveRDS(shortestPaths, file = "shortestPaths_accCost.rds")
+            
   
   result <- as(x, "RasterLayer")
   result <- setValues(result, shortestPaths)	
