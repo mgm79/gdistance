@@ -94,7 +94,7 @@ setMethod("accCost", signature(x = "TransitionLayer",
 
   print(shortestPaths)
   # Save an object to a file
-  saveRDS(shortestPaths, file = "shortestPaths.rds")
+  saveRDS(shortestPaths, file = "shortestPaths_accCost.rds")
   
   result <- as(x, "RasterLayer")
   result <- setValues(result, shortestPaths)	
