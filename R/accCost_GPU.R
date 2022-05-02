@@ -99,6 +99,12 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   adjacencyGraph <- cuRnet_graph(adjacencyGraph_df)
   shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
                                   from=startNode) #[-startNode]
+
+  print(shortestPaths)
+  # Save an object to a file
+  saveRDS(shortestPaths, file = "shortestPaths.rds")
+
+  print(shortestPaths[-startNode])
   #shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
                                   #v=startNode, mode="out")[-startNode]
   
