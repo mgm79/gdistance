@@ -89,23 +89,24 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   adjacencyGraph_igraph <- graph.adjacency(tr, mode="directed", weighted=TRUE)
   E(adjacencyGraph_igraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
 
-  
-  require(cuRnet)
-  library(cuRnet)
+  if (require(cuRnet)) {
+    print("Library")
+    library(cuRnet)
 
-  adjacencyGraph_df <- as_data_frame(adjacencyGraph_igraph)
-  colnames(adjacencyGraph_df)[3] <- 'score'
-
-  adjacencyGraph <- cuRnet_graph(adjacencyGraph_df)
-  shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
+    adjacencyGraph_df <- as_data_frame(adjacencyGraph_igraph)
+    colnames(adjacencyGraph_df)[3] <- 'score'
+    
+    adjacencyGraph <- cuRnet_graph(adjacencyGraph_df)
+    shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
                                   from=startNode)[-startNode]
             
-  #shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
+    #shortestPaths <- cuRnet_sssp_dists(adjacencyGraph, 
                                   #v=startNode, mode="out")[-startNode]
   
-  result <- as(x, "RasterLayer")
-  result <- setValues(result, shortestPaths)	
-  return(result)
+    result <- as(x, "RasterLayer")
+    result <- setValues(result, shortestPaths)	
+    return(result)
+  }
 }
 )
 
