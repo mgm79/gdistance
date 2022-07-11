@@ -90,7 +90,7 @@ setMethod("accCost_GPU", signature(x = "TransitionLayer",
   E(adjacencyGraph_igraph)$weight <- 1 / E(adjacencyGraph_igraph)$weight	
 
   if (require(cuRnet)) {
-    print("Library")
+    print("Library cuRnet was succefully loaded, CUDA and GPU library are on the system.")
     library(cuRnet)
 
     adjacencyGraph_df <- as_data_frame(adjacencyGraph_igraph)
