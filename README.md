@@ -25,7 +25,7 @@ The development version can be installed via
 
 ``` r
 library("devtools")
-install_github("mgm79/gdistance")
+install_github("mgm79/gpu_gdistance")
 ```
 
 ## Going further
@@ -38,7 +38,7 @@ vignette("Overview", package = "gdistance")
 
 ## Meta
 
-  - Please [report any issues or bugs](https://github.com/mgm79/gdistance/issues).
+  - Please [report any issues or bugs](https://github.com/mgm79/gpu_gdistance/issues).
 
   - License: GPL-3.
 
